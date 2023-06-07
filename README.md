@@ -1,1 +1,3 @@
 # apiSUAP
+
+pip install oauthlib
