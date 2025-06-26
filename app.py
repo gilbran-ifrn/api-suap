@@ -1,9 +1,18 @@
 import os
 
-from flask import Flask, redirect, request, session, url_for
+from flask import Flask
+from flask import redirect
+from flask import request
+from flask import session
+from flask import url_for
+from flask import render_template
 
 from flask_login import UserMixin
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_login import LoginManager
+from flask_login import login_user
+from flask_login import logout_user
+from flask_login import login_required
+from flask_login import current_user
 
 from requests_oauthlib import OAuth2Session
 from dotenv import load_dotenv
@@ -46,7 +55,7 @@ def load_user(user_id):
 # Página inicial
 @app.route("/")
 def index():
-    return '<a href="/login">Entrar com SUAP</a>'
+    return render_template('index.html')
 
 # Rota de login
 @app.route("/login")
