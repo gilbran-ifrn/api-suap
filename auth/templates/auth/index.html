@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API SUAP</title>
-<!-- <link rel="stylesheet" href="../static/styles.css"> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('auth_bp.static', filename='auth/styles.css') }}">
 </head>
 <body>
     <main class="container">
@@ -14,6 +13,15 @@
                 <div class="botao dark">
                     <div class="icon-signin">
                             <img src="https://portal.suap.ifrn.edu.br/images/logo.svg" alt="">
+                    </div>
+                    <div class="text-signin">Entrar com o SUAP</div>
+                </div>
+            </a>
+
+            <a href="/login">
+                <div class="botao light">
+                    <div class="icon-signin">
+                            <img src="https://suap.ifrn.edu.br/static/comum/documentacao/logo.svg" alt="">
                     </div>
                     <div class="text-signin">Entrar com o SUAP</div>
                 </div>

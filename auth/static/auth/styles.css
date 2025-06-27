@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+a:link, a:hover, a:visited {
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     width: 100%;
@@ -34,10 +38,18 @@
     color: #e3e3e3;
 }
 
+.dark:hover {
+    background-color: #1e1e1e;
+}
+
 .light {
     background-color: #FFFFFF;
     border: 1px solid #747775;
     color: #1F1F1F;
+}
+
+.light:hover {
+    background-color: #f6f6f6;
 }
 
 
