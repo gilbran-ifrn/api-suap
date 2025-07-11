@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API SUAP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cards.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <!--<div>{{ current_user.nome }}</div>-->
+        {% block header %}
+        {% endblock %}
+    </header>
+   <main>
+        {% block conteudo %}
+        {% endblock %}
+   </main>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+</html>

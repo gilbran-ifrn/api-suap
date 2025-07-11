@@ -1,0 +1,43 @@
+{% macro exibeDado(dado) -%}
+    {% if dado is string or dado is number or dado is none %}
+        <div class="card-valor">{{ dado }}</div>
+    {% else %}
+        {% if dado is mapping %}
+            {% for chave in dado %}
+                <div class="card-titulo">{{ chave }}</div>
+                {{ exibeDado(dado[chave]) }}
+            {% endfor %}
+        {% else %}
+            {% for item in dado %}
+                {{ exibeDado(item) }}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{%- endmacro %}
+
+{% extends 'base.html' %}
+
+{% block header %}
+    {% include 'navGeral.html' %}
+    {% include secao+'/navEspecifico.html' %}
+{% endblock %}
+
+{% block conteudo %}
+
+<section>
+    {% for i in dados %}
+        {% if dados[i] is string or dados[i] is number %}
+            <div>
+                <div class="card-titulo">{{ i }}</div>
+                {{ exibeDado(dados[i]) }}
+            </div>
+        {% else %}
+            <div>
+                <div class="card-titulo">{{ i }}</div>
+                {{ exibeDado(dados[i]) }}
+            </div>
+        {% endif %}
+    {% endfor %}
+</section>
+
+{% endblock %}

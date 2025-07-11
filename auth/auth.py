@@ -79,7 +79,7 @@ def callback():
     users[user.id] = user
     login_user(user)
 
-    return redirect(url_for("auth_bp.perfil"))
+    return redirect(url_for("auth_bp.dash"))
 
 
 #logout
@@ -87,7 +87,7 @@ def callback():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("logout_sucesso"))
+    return redirect(url_for("auth_bp.logout_sucesso"))
 
 @auth_bp.route("/logout-sucesso")
 def logout_sucesso():
@@ -103,10 +103,10 @@ def index():
     return render_template('auth/index.html')
 
 # Rota protegida: exibe informações do usuário logado
-@auth_bp.route("/perfil")
+@auth_bp.route("/dash")
 @login_required
-def perfil():
+def dash():
     suap = OAuth2Session(CLIENT_ID, token=current_user.token)
     dados = suap.get(API_BASE_URL + "/rh/eu/").json()
 
-    return f"<h1>Olá, {dados['nome_usual']}</h1>"
+    return render_template('auth/dash.html')

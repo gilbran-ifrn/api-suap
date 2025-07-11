@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    {% include 'navGeral.html' %}
+    {% include secao+'/navEspecifico.html' %}
+{% endblock %}
+
+{% block conteudo %}
+
+<div>Erro {{ erro }}</div>
+<div>{{ mens }}</div>
+
+{% endblock %}
