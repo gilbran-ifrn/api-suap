@@ -25,10 +25,10 @@ def index():
 @comum_bp.route("/meus-dados")
 @login_required
 def meusDados():
-    return feedback("comum/meus-dados/", "comum")
+    return feedback("/api/comum/meus-dados/", "comum")
 
 @comum_bp.route("/suap-em-numeros")
 @login_required
 def suapNumeros():
-    return feedback("comum/suap-em-numeros/", "comum")
+    return feedback("/api/comum/suap-em-numeros/", "comum")
     

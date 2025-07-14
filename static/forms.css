@@ -1,0 +1,35 @@
+
+input {
+    border: none;
+    border-bottom: 2px solid green;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 2px solid red;
+}
+
+input:invalid {
+    background-color: red;
+}
+
+input:required {
+  border-color: #800000;
+  border-width: 3px;
+}
+
+input:required:invalid {
+  border-color: #c00000;
+}
+
+input:invalid + span::before {
+  content: " ";
+}
+
+input:invalid + span::after {
+  content: " ✖";
+}
+
+input:valid + span::after {
+  content: " ✓";
+}

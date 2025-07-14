@@ -68,7 +68,7 @@ def callback():
     )
 
     suap = OAuth2Session(CLIENT_ID, token=token)
-    perfil = suap.get(API_BASE_URL + "/rh/eu/").json()
+    perfil = suap.get(API_BASE_URL + "/api/rh/eu/").json()
 
     user = Usuario(
         id=str(perfil["identificacao"]),
@@ -106,7 +106,4 @@ def index():
 @auth_bp.route("/dash")
 @login_required
 def dash():
-    suap = OAuth2Session(CLIENT_ID, token=current_user.token)
-    dados = suap.get(API_BASE_URL + "/rh/eu/").json()
-
     return render_template('auth/dash.html')

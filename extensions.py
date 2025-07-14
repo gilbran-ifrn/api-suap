@@ -23,11 +23,18 @@ CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 AUTH_URL = "https://suap.ifrn.edu.br/o/authorize/"
 TOKEN_URL = "https://suap.ifrn.edu.br/o/token/"
 REDIRECT_URI = os.getenv("REDIRECT_URI")
-API_BASE_URL = "https://suap.ifrn.edu.br/api/"
+API_BASE_URL = "https://suap.ifrn.edu.br"
 
-def feedback(endpoint, secao):
+def feedback(endpoint, secao, params=None):
     suap = OAuth2Session(CLIENT_ID, token=current_user.token)
-    resposta = suap.get(API_BASE_URL + endpoint)
+
+    if params:
+        resposta = suap.get(API_BASE_URL + endpoint, params=params)
+    else:
+        resposta = suap.get(API_BASE_URL + endpoint)
+
+    #if not resposta.ok:
+    #    return f"Erro {resposta.status_code}. Deu merda"
 
     print(f"= = = = = = = = = = =")
     print(f"CÓDIGO: {resposta.status_code}")
@@ -36,8 +43,10 @@ def feedback(endpoint, secao):
     if resposta.status_code == 200:
         dados = resposta.json()
         return render_template('exibeDados.html', dados=dados, secao=secao)
-    elif resposta.status_code == 401:
-        dados = resposta.json()
-        return render_template('exibeErro.html', erro='401', mens=dados['detail'], secao=secao)
+    elif resposta.status_code == 500:
+        dados = {'mens':'A bronca é do lado do SUAP, não do frontend!'}
+        return render_template('exibeErro.html', erro=resposta.status_code, mens=dados, secao=secao)
     else:
-        return render_template('exibeErro.html', erro=resposta.status_code, mens=dados['detail'], secao=secao)
+        dados = resposta.json()
+        return render_template('exibeErro.html', erro=resposta.status_code, mens=dados, secao=secao)
+    

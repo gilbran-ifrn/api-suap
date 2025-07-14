@@ -8,23 +8,17 @@ from dotenv import load_dotenv
 # Carregar variáveis do .env
 load_dotenv()
 
-ponto_bp = Blueprint (
-    'ponto_bp',
+portaria_bp = Blueprint (
+    'portaria_bp',
     __name__,
     template_folder='templates',
     static_folder='static',
-    static_url_path='/ponto/static/'
+    static_url_path='/portaria/static/'
 )
 
 # Página inicial
-@ponto_bp.route("/")
+@portaria_bp.route("/")
 @login_required
 def index():
-    return render_template('exibeInicio.html', secao="ponto")
+    return render_template('exibeInicio.html', secao="portaria")
 
-@ponto_bp.route("/minhas-frequencias")
-@login_required
-def meusDados():
-    return feedback("/api/ponto/minhas-frequencias/", "ponto")
-
-    

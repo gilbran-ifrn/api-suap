@@ -8,6 +8,8 @@
 {% block conteudo %}
 
 <div>Erro {{ erro }}</div>
-<div>{{ mens }}</div>
+{% for i in mens %}
+<div>{{ i }}: {{ mens[i] }}</div>
+{% endfor %}
 
 {% endblock %}
