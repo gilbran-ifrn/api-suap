@@ -46,8 +46,13 @@
                 </div>
             {% else %}
                 <div>
-                    <div class="card-titulo">{{ i }}</div> <!-- 0 -->
-                    {{ exibeDado(dados[i]) }}
+                    {% if i is mapping %}
+                        <div class="card-titulo"></div> <!-- 0 -->
+                        {{ exibeDado(i) }}
+                    {% else %}
+                        <div class="card-titulo">{{ i }}</div> <!-- 0 -->
+                        {{ exibeDado(dados[i]) }}
+                    {% endif %}
                 </div>
             {% endif %}
         {% endif %}

@@ -21,3 +21,8 @@ demandas_bp = Blueprint (
 @login_required
 def index():
     return render_template('exibeInicio.html', secao="demandas")
+
+@demandas_bp.route("/atualizacoes")
+@login_required
+def atualizacoes():
+    return feedback("/api/demandas/atualizacoes/", "demandas")

@@ -21,3 +21,8 @@ pesquisa_bp = Blueprint (
 @login_required
 def index():
     return render_template('exibeInicio.html', secao="pesquisa")
+
+@pesquisa_bp.route("/projetos")
+@login_required
+def projetos():
+    return feedback("/api/pesquisa/projetos/", "pesquisa")

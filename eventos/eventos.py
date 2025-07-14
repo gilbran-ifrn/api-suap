@@ -21,3 +21,8 @@ eventos_bp = Blueprint (
 @login_required
 def index():
     return render_template('exibeInicio.html', secao="eventos")
+
+@eventos_bp.route("/banners-ativos")
+@login_required
+def atualizacoes():
+    return feedback("/api/eventos/banners/ativos/", "eventos")

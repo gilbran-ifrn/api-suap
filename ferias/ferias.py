@@ -21,3 +21,8 @@ ferias_bp = Blueprint (
 @login_required
 def index():
     return render_template('exibeInicio.html', secao="ferias")
+
+@ferias_bp.route("/minhas-ferias")
+@login_required
+def minhasFerias():
+    return feedback("/api/ferias/minhas-ferias/", "ferias")

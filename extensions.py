@@ -6,6 +6,8 @@ from flask import request
 from flask import session
 from flask import url_for
 
+import requests
+
 from flask_login import login_user
 from flask_login import logout_user
 from flask_login import current_user
@@ -36,6 +38,8 @@ def feedback(endpoint, secao, params=None):
     #if not resposta.ok:
     #    return f"Erro {resposta.status_code}. Deu merda"
 
+    print (resposta.headers)
+
     print(f"= = = = = = = = = = =")
     print(f"CÓDIGO: {resposta.status_code}")
     print(f"= = = = = = = = = = =")
@@ -48,5 +52,9 @@ def feedback(endpoint, secao, params=None):
         return render_template('exibeErro.html', erro=resposta.status_code, mens=dados, secao=secao)
     else:
         dados = resposta.json()
+        #if resposta:
+        #    dados = resposta.json()
+        #else:
+        #    dados = {'mens':'Não acho que a bronca é minha!'}
         return render_template('exibeErro.html', erro=resposta.status_code, mens=dados, secao=secao)
     
