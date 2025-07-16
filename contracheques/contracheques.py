@@ -50,7 +50,7 @@ def meuContracheque():
 	            { "rotulo":"Ano", "tipo":"number", "id":"ano", "obrigatorio":"required" },
                 { "rotulo":"Mês", "tipo":"number", "id":"mes", "obrigatorio":"required" }
         ]
-        return render_template('exibeForm.html', action=a, form=f, secao='rh')
+        return render_template('exibeForm.html', action=a, form=f, secao='contracheques')
 
 
 @contracheques_bp.route("/contracheques")

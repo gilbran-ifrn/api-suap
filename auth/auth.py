@@ -88,13 +88,14 @@ def callback():
 def logout():
     logout_user()
     return redirect(url_for("auth_bp.logout_sucesso"))
+    #return redirect("https://suap.ifrn.edu.br/o/logout/?next=" + url_for("index", _external=True))
 
 @auth_bp.route("/logout-sucesso")
 def logout_sucesso():
     return """
     <h1>Você saiu com sucesso.</h1>
     <p>Obrigado por utilizar a aplicação!</p>
-    <a href='/'>Voltar à página inicial</a> | <a href='/login'>Entrar novamente</a>
+    <a href='/'>Voltar à página inicial</a> | <a href='/login'>Entrar novamente</a> | <a href='https://suap.ifrn.edu.br/comum/logout'>Deslogar SUAP</a>
     """
 
 # Página inicial
