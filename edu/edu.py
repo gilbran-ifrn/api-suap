@@ -416,7 +416,7 @@ def dadosAlunoMatriculado():
             'matricula': m
         }
 
-        return feedback(f"/api/edu/dados-aluno-matriculado/", secaoAtual, params)
+        return feedback(f"/api/ensino/aluno-matriculado/", secaoAtual, params)
     else:
         a = 'edu_bp.dadosAlunoMatriculado'
         f = [
