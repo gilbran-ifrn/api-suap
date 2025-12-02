@@ -1,0 +1,62 @@
+{% macro exibeDado(dado,nivel=0) -%}
+    {% if dado is string or dado is number or dado is none %}
+            <!-- Exibindo valor no nível {{ nivel }} -->
+            <div class="card-valor">{{ dado }}</div>
+    {% else %}
+        {% set nivel = nivel+1 %}
+        {% if dado is mapping %}
+            <!-- Achei um DICT no nivel {{nivel}} --> <div class="card-sub">
+            {% for chave in dado %}
+                <!-- Exibindo título no nível {{ nivel }} -->
+                <div class="card-titulo">{{ chave }}</div> 
+                {{ exibeDado(dado[chave], nivel) }}
+            {% endfor %}
+            <!-- Saindo do DICT no nivel {{nivel}} --></div>
+        {% else %}
+            <!-- Achei uma LIST no nivel {{nivel}} --><div class="card-sub">
+            {% for item in dado %}
+                {{ exibeDado(item,nivel) }}
+            {% endfor %}
+            <!-- Saindo da LIST no nivel {{nivel}} --></div>
+        {% endif %}
+    {% endif %}
+{%- endmacro %}
+
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<section class="tit-pagina">
+    <div class="titulo">Link da Navegação</div>
+    <div class="endpoint">EndPoint</div>
+</section>
+
+<section>
+    {% for i in dados %}
+        {% if dados[i] is string or dados[i] is number %}
+            <div>
+                <div class="card-titulo">{{ i }}</div> <!-- 0 -->
+                {{ exibeDado(dados[i]) }}
+            </div>
+        {% else %}
+            {% if dados[i] is mapping %}
+                <div>
+                    <div class="card-titulo">{{ i }}</div> <!-- 0 -->
+                    {{ exibeDado(dados[i],2) }}
+                </div>
+            {% else %}
+                <div>
+                    {% if i is mapping %}
+                        <div class="card-titulo"></div> <!-- 0 -->
+                        {{ exibeDado(i) }}
+                    {% else %}
+                        <div class="card-titulo">{{ i }}</div> <!-- 0 -->
+                        {{ exibeDado(dados[i]) }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</section>
+
+{% endblock %}

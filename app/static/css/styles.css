@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+    --tam-square: calc(100vh * 0.05);
+    --green-if: #2f9e41;
+    --red-if: #cd191e;
+    font-size: 16px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Open Sans';
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+    "nav main main"
+    "footer footer footer";
+    grid-template-rows: minmax(calc(100vh - 40px), 1fr) 40px;
+    grid-template-columns: 20rem repeat(2,1fr);
+}
+
+header {
+    grid-area: nav;
+    margin-bottom: 10px;
+}
+
+
+footer {
+    grid-area: footer;
+    margin-top: 10px;
+    position: sticky;
+    bottom: 0px;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #101212;
+    color: #dfede2;
+    z-index: 1;
+}
+
+main {
+    grid-area: main;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo {
+    display: grid;
+    gap: calc(var(--tam-square) * 0.2);
+    grid-template-columns: auto auto auto;
+    margin-bottom: calc(var(--tam-square) * 0.75);
+}
+
+.logo-txt {
+    color: #000;
+    display: grid;
+    gap: calc(var(--tam-square) * 0.2);
+    grid-template-columns: repeat(7, var(--tam-square));
+    grid-template-rows: repeat(4, var(--tam-square));
+    grid-template-areas: 
+    "titulo1 titulo1 titulo1 titulo1 titulo1 titulo1 titulo1"
+    "titulo2 titulo2 titulo2 titulo2 titulo2 titulo2 titulo2"
+    "subtitulo1 subtitulo1 subtitulo1 subtitulo1 subtitulo1 subtitulo1 subtitulo1"
+    "subtitulo2 subtitulo2 subtitulo2 subtitulo2 subtitulo2 subtitulo2 subtitulo2"
+    ;
+}
+
+.logo-tit {
+    text-align: center;
+    font-size: calc(var(--tam-square) * 1.25);
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    line-height: 4.5vh;
+}
+
+.logo-tit-nome1 {
+    grid-area: titulo1;
+}
+.logo-tit-nome2 {
+    grid-area: titulo2;
+}
+.logo-subtit-nome1 {
+    grid-area: subtitulo1;
+}
+.logo-subtit-nome2 {
+    grid-area: subtitulo2;
+}
+
+.logo-subtit {
+    text-align: center;
+    font-size: calc(var(--tam-square) * 0.93);
+    overflow: hidden;
+    line-height: 5.5vh;
+}
+
+.square {
+    width: var(--tam-square);
+    height: var(--tam-square);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red {
+    border-radius: 50%;
+    background-color: var(--red-if); /* Vermelho IF */
+    outline: calc(var(--tam-square) * 0.05) solid var(--red-if);
+}
+
+.green {
+    border-radius: 10%;
+    background-color: var(--green-if); /* Verde IF */;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API SUAP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+</head>
+<body>
+    <header>
+        <!--<div>{{ current_user.nome }}</div>-->
+        {% include 'nav.html' %}
+    </header>
+   <main>
+        {% block conteudo %}
+        {% endblock %}
+   </main>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+</html>

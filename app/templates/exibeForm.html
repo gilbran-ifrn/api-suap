@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+
+
+{% block conteudo %}
+
+<section>
+    <form action="{{ url_for( action ) }}" method="post">
+        {% for campo in form %}
+        <div>
+            <label for="{{ campo['id'] }}">{{ campo['rotulo'] }}</label>
+            <input type="{{ campo['tipo'] }}" id="{{ campo['id'] }}" name="{{ campo['id'] }}" {{ campo['obrigatorio'] }}>
+        </div>
+        {% endfor %}
+
+        <input type="submit" value="Enviar">
+    </form>
+</section>
+
+{% endblock %}

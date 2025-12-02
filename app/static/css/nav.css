@@ -1,0 +1,113 @@
+header {
+    height: 100%;
+    
+}
+
+header > nav {
+    box-shadow: 0px 5px 10px gray;
+    background-color: #0b2811;
+    font-size: 0.8rem;
+    /*min-height: 100vh;*/
+    height: calc(100% + 20px);
+    
+}
+
+.titulo, .subtitulo {
+    
+    text-align: center;
+    font-weight: lighter;
+}
+
+.titulo {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+    color: #f2fbf3;
+}
+
+.subtitulo {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #f2fbf3a5;
+}
+
+.item, .subitem {
+    color: #f2fbf3;
+    list-style-type: none;
+}
+
+.subitem > li:first-child {
+    margin-top: 0.5rem;
+}
+
+.item > li, .subitem > li {
+    text-align: left;
+    cursor: pointer;
+    min-height: 2.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.item > li {
+    padding-left: 15px;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(0.25turn, #1d4a26, #0b2811);
+    border-image-slice: 1;
+}
+
+.item > li > a {
+    text-transform: uppercase;
+}
+
+.subitem {
+    background-color: #1d4a26;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    text-transform: inherit;
+}
+
+.item > li.ativo {
+    background-color: #1d4a26;
+}
+
+.subitem.ativo {
+    max-height: 1000px;
+}
+
+.subitem > li {
+    padding-left: 25px;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(0.25turn, #215a2b, #1d4a26);
+    border-image-slice: 1;
+}
+
+.item > li:hover {
+    background-color: #1d4a26;
+}
+
+.subitem > li:hover {
+    background-color: #215a2b;
+}
+
+.item > li > a, .subitem > li > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li > i {
+    margin-right: 10px;
+}
+
+.sairV {
+    color: #e22025;
+}
+
+li:last-child {
+    border: none;
+}
+
+.deprecated {
+    text-decoration: line-through;
+    color: gray;
+}
