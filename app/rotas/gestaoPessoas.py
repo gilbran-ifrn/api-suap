@@ -24,7 +24,7 @@ gestaoPessoas_bp = Blueprint (
 @gestaoPessoas_bp.route("/meus-dados")
 @login_required
 def meusDados():
-    return feedback("/api/comum/meus-dados/", "comum")
+    return feedback("/api/rh/meus-dados/", "comum")
 
 @gestaoPessoas_bp.route("/eu")
 @login_required
@@ -202,12 +202,12 @@ def carteiraFuncional():
 @gestaoPessoas_bp.route("/minhas-ferias")
 @login_required
 def minhasFerias():
-    return feedback("/api/ferias/minhas-ferias/", "ferias")
+    return feedback("/api/rh/minhas-ferias/", "ferias")
 
 @gestaoPessoas_bp.route("/minhas-frequencias")
 @login_required
 def minhaFrequencia():
-    return feedback("/api/ponto/minhas-frequencias/", "ponto")
+    return feedback("/api/rh/minhas-frequencias/", "ponto")
 
 @gestaoPessoas_bp.route("/servidor-resumido", methods=["GET","POST"])
 @login_required
@@ -232,7 +232,7 @@ def servidorResumido():
 @gestaoPessoas_bp.route("/meus-contracheques")
 @login_required
 def meusContracheques():
-    return feedback("/api/contracheques/meus-contracheques/", "contracheques")
+    return feedback("/api/rh/meus-contracheques/", "contracheques")
 
 @gestaoPessoas_bp.route("/meu-contracheque", methods=["GET","POST"])
 @login_required
@@ -248,7 +248,7 @@ def meuContracheque():
 
         print (params)
 
-        return feedback(f"/api/contracheques/meu-contracheque/{params['ano']}/{params['mes']}/", "contracheques")
+        return feedback(f"/api/rh/meu-contracheque/{params['ano']}/{params['mes']}/", "contracheques")
     else:
         a = 'gestaoPessoas_bp.meuContracheque'
         f = [
@@ -260,4 +260,4 @@ def meuContracheque():
 @gestaoPessoas_bp.route("/contracheques")
 @login_required
 def contracheques():
-    return feedback("/api/contracheques/contracheques/", "contracheques")
+    return feedback("/api/rh/contracheques/", "contracheques")
