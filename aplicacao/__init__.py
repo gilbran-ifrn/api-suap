@@ -6,7 +6,7 @@ import os
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = os.urandom(24)  # Para gerenciar a sessão
+    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
     loggin_manager.login_view = "login"  # Rota de login
     loggin_manager.init_app(app)
