@@ -61,27 +61,33 @@ def login():
 # Callback do SUAP (deve ser configurado no cadastro da aplicação)
 @auth_bp.route("/callback")
 def callback():
-    suap = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI, state=session.get("oauth_state"))
+    try:
+        suap = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI, state=session.get("oauth_state"))
 
-    token = suap.fetch_token(
-        TOKEN_URL,
-        authorization_response=request.url,
-        client_secret=CLIENT_SECRET
-    )
+        token = suap.fetch_token(
+            TOKEN_URL,
+            authorization_response=request.url,
+            client_secret=CLIENT_SECRET
+        )
+    except Exception as e:
+        return f'Erro: {str(e)}<br><a href="/">Voltar</a>'
 
-    suap = OAuth2Session(CLIENT_ID, token=token)
-    perfil = suap.get(API_BASE_URL + "/api/rh/eu/").json()
+    try:
+        suap = OAuth2Session(CLIENT_ID, token=token)
+        perfil = suap.get(API_BASE_URL + "/api/rh/eu/").json()
 
-    user = Usuario(
-        id=str(perfil["identificacao"]),
-        nome=perfil["nome_usual"],
-        email=perfil["email"],
-        token=token
-    )
-    users[user.id] = user
-    login_user(user)
+        user = Usuario(
+            id=str(perfil["identificacao"]),
+            nome=perfil["nome_usual"],
+            email=perfil["email"],
+            token=token
+        )
+        users[user.id] = user
+        login_user(user)
 
-    return redirect(url_for("auth_bp.dash"))
+        return redirect(url_for("auth_bp.dash"))
+    except Exception as e:
+        return f'Erro: {str(e)}<br><a href="/">Voltar</a>'
 
 #logout
 @auth_bp.route("/logout")
