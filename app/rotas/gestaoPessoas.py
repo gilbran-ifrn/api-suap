@@ -8,10 +8,6 @@ from app.utils.extensions import API_BASE_URL
 from app.utils.extensions import loggin_manager
 from app.utils.extensions import feedback
 
-from dotenv import load_dotenv
-
-# Carregar variáveis do .env
-load_dotenv()
 
 gestaoPessoas_bp = Blueprint (
     'gestaoPessoas_bp',

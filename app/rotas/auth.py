@@ -23,7 +23,7 @@ from app.utils.extensions import TOKEN_URL
 from app.utils.extensions import REDIRECT_URI
 from app.utils.extensions import API_BASE_URL
 
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 auth_bp = Blueprint (
     'auth_bp',
@@ -35,7 +35,7 @@ auth_bp = Blueprint (
 
 
 # Carregar variáveis do .env
-load_dotenv()
+#load_dotenv()
 
 # Usuários ativos armazenados em memória (exemplo)
 users = {}
