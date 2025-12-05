@@ -1,6 +1,6 @@
 from flask import Flask
 
-from app.utils.extensions import loggin_manager
+from aplicacao.utils.extensions import loggin_manager
 
 import os
 
@@ -12,14 +12,14 @@ def create_app():
     loggin_manager.init_app(app)
 
     # Registrando blueprints
-    from app.rotas.auth import auth_bp
-    from app.rotas.administracao import administracao_bp
-    from app.rotas.comunicacaoSocial import comunicacaoSocial_bp
-    from app.rotas.ensino import ensino_bp
-    from app.rotas.gestaoInstitucional import gestaoInstitucional_bp
-    from app.rotas.gestaoPessoas import gestaoPessoas_bp
-    from app.rotas.pesquisa import pesquisa_bp
-    from app.rotas.tecnologiaInformacao import tecnologiaInformacao_bp
+    from aplicacao.rotas.auth import auth_bp
+    from aplicacao.rotas.administracao import administracao_bp
+    from aplicacao.rotas.comunicacaoSocial import comunicacaoSocial_bp
+    from aplicacao.rotas.ensino import ensino_bp
+    from aplicacao.rotas.gestaoInstitucional import gestaoInstitucional_bp
+    from aplicacao.rotas.gestaoPessoas import gestaoPessoas_bp
+    from aplicacao.rotas.pesquisa import pesquisa_bp
+    from aplicacao.rotas.tecnologiaInformacao import tecnologiaInformacao_bp
 
     
 

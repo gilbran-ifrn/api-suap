@@ -13,15 +13,15 @@ from flask_login import current_user
 
 from requests_oauthlib import OAuth2Session
 
-from app.utils.models import Usuario
+from aplicacao.utils.models import Usuario
 
-from app.utils.extensions import loggin_manager
-from app.utils.extensions import CLIENT_ID
-from app.utils.extensions import CLIENT_SECRET
-from app.utils.extensions import AUTH_URL
-from app.utils.extensions import TOKEN_URL
-from app.utils.extensions import REDIRECT_URI
-from app.utils.extensions import API_BASE_URL
+from aplicacao.utils.extensions import loggin_manager
+from aplicacao.utils.extensions import CLIENT_ID
+from aplicacao.utils.extensions import CLIENT_SECRET
+from aplicacao.utils.extensions import AUTH_URL
+from aplicacao.utils.extensions import TOKEN_URL
+from aplicacao.utils.extensions import REDIRECT_URI
+from aplicacao.utils.extensions import API_BASE_URL
 
 #from dotenv import load_dotenv
 

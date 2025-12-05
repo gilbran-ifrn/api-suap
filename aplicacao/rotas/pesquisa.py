@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import render_template
 from flask_login import login_required
-from app.utils.extensions import feedback
+from aplicacao.utils.extensions import feedback
 
 
 pesquisa_bp = Blueprint (
