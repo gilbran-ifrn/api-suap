@@ -6,7 +6,7 @@ from flask_login import login_required
 from aplicacao.utils.models import Usuario
 from aplicacao.utils.extensions import API_BASE_URL
 from aplicacao.utils.extensions import loggin_manager
-from aplicacao.utils.extensions import feedback
+from aplicacao.utils.extensions import obterRecurso
 
 administracao_bp = Blueprint (
     'administracao_bp',
@@ -41,7 +41,7 @@ def meusProcessos():
             'data_cadastro': dc
         }
 
-        return feedback("/api/administracao/meus-processos-fisicos/", "protocolo", params)
+        return obterRecurso("/api/administracao/meus-processos-fisicos/", "protocolo", params)
     else:
         a = 'administracao_bp.meusProcessos'
         f = [
@@ -65,13 +65,13 @@ def processoEspecifico():
 
         print(params)
 
-        return feedback(f"/api/administracao/meu-processo-fisico/{params['pk']}/", "protocolo")
+        return obterRecurso(f"/api/administracao/meu-processo-fisico/{params['pk']}/")
     else:
         a = 'administracao_bp.processoEspecifico'
         f = [
 	            { "rotulo":"PK", "tipo":"number", "id":"pk", "obrigatorio":"required" }
         ]
-        return render_template('exibeForm.html', action=a, form=f, secao='protocolo')
+        return render_template('exibeForm.html', action=a, form=f)
     
 @administracao_bp.route("/validar-visitante", methods=["GET","POST"])
 @login_required
@@ -85,10 +85,10 @@ def validarVisitante():
 
         print (params)
 
-        return feedback(f"/api/administracao/validar-visitante-portaria/{params['chave_wifi']}/", "portaria")
+        return obterRecurso(f"/api/administracao/validar-visitante-portaria/{params['chave_wifi']}/")
     else:
         a = 'administracao_bp.validarVisitante'
         f = [
 	            { "rotulo":"Chave WiFi", "tipo":"text", "id":"chave_wifi", "obrigatorio":"required" }
         ]
-        return render_template('exibeForm.html', action=a, form=f, secao='portaria')
+        return render_template('exibeForm.html', action=a, form=f)

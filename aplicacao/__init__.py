@@ -1,21 +1,15 @@
 from flask import Flask
 
-from flask_talisman import Talisman
-
 from aplicacao.utils.extensions import loggin_manager
 
 import os
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = os.getenv("SECRET_KEY")
-    #app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
-    # Ativa HTTPS automaticamente no Heroku
-    Talisman(app, force_https=True)
-
-    loggin_manager.login_view = "login"  # Rota de login
     loggin_manager.init_app(app)
+    loggin_manager.login_view = "login"  # Rota de login
 
     # Registrando blueprints
     from aplicacao.rotas.auth import auth_bp
@@ -26,8 +20,6 @@ def create_app():
     from aplicacao.rotas.gestaoPessoas import gestaoPessoas_bp
     from aplicacao.rotas.pesquisa import pesquisa_bp
     from aplicacao.rotas.tecnologiaInformacao import tecnologiaInformacao_bp
-
-    
 
     app.register_blueprint(auth_bp, url_prefix='/')
     app.register_blueprint(administracao_bp, url_prefix='/administracao')

@@ -6,7 +6,7 @@ from flask_login import login_required
 from aplicacao.utils.models import Usuario
 from aplicacao.utils.extensions import API_BASE_URL
 from aplicacao.utils.extensions import loggin_manager
-from aplicacao.utils.extensions import feedback
+from aplicacao.utils.extensions import obterRecurso
 
 # Carregar variáveis do .env
 
@@ -21,9 +21,9 @@ comunicacaoSocial_bp = Blueprint (
 @comunicacaoSocial_bp.route("/banners")
 @login_required
 def banners():
-    return feedback("/api/midia/banners/", "eventos")
+    return obterRecurso("/api/midia/banners/")
 
 @comunicacaoSocial_bp.route("/ativos-deferidos")
 @login_required
 def bannersAtivo():
-    return feedback("/api/midia/eventos/ativos-deferidos/", "eventos")
+    return obterRecurso("/api/midia/eventos/ativos-deferidos/")

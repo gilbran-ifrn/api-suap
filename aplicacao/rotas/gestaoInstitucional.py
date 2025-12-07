@@ -6,7 +6,7 @@ from flask_login import login_required
 from aplicacao.utils.models import Usuario
 from aplicacao.utils.extensions import API_BASE_URL
 from aplicacao.utils.extensions import loggin_manager
-from aplicacao.utils.extensions import feedback
+from aplicacao.utils.extensions import obterRecurso
 
 
 gestaoInstitucional_bp = Blueprint (
@@ -20,7 +20,7 @@ gestaoInstitucional_bp = Blueprint (
 @gestaoInstitucional_bp.route("/estatisticas")
 @login_required
 def suapNumeros():
-    return feedback("/api/institucional/estatisticas/", "comum")
+    return obterRecurso("/api/institucional/estatisticas/")
 
 @gestaoInstitucional_bp.route("/consulta-documentos", methods=["GET","POST"])
 @login_required
@@ -39,11 +39,11 @@ def consultaPublica():
             'assunto': a
         }
 
-        return feedback("/api/institucional/consulta_publica/documentos/", "rh", params)
+        return obterRecurso("/api/institucional/consulta_publica/documentos/", params)
     else:
         a = 'gestaoInstitucional_bp.consultaPublica'
         f = [
 	            { "rotulo":"Identificador", "tipo":"text", "id":"identificador", "obrigatorio":"" },
                 { "rotulo":"Assunto", "tipo":"text", "id":"assunto", "obrigatorio":"" },
         ]
-        return render_template('exibeForm.html', action=a, form=f, secao='rh')
+        return render_template('exibeForm.html', action=a, form=f)

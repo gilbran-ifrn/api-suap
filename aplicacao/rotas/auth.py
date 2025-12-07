@@ -1,29 +1,40 @@
-from flask import Blueprint
-from flask import Blueprint
-from flask import render_template
-from flask import redirect
-from flask import request
-from flask import session
-from flask import url_for
+from flask import (
+    Blueprint,
+    render_template,
+    redirect,
+    request,
+    session,
+    url_for
+)
 
-from flask_login import login_required
-from flask_login import login_user
-from flask_login import logout_user
-from flask_login import current_user
+from flask_login import (
+    login_required,
+    login_user,
+    logout_user,
+    current_user
+)
 
 from requests_oauthlib import OAuth2Session
 
 from aplicacao.utils.models import Usuario
 
-from aplicacao.utils.extensions import loggin_manager
-from aplicacao.utils.extensions import CLIENT_ID
-from aplicacao.utils.extensions import CLIENT_SECRET
-from aplicacao.utils.extensions import AUTH_URL
-from aplicacao.utils.extensions import TOKEN_URL
-from aplicacao.utils.extensions import REDIRECT_URI
-from aplicacao.utils.extensions import API_BASE_URL
+from aplicacao.utils.extensions import (
+    loggin_manager, 
+    CLIENT_ID,
+    CLIENT_SECRET,
+    AUTH_URL,
+    TOKEN_URL,
+    REDIRECT_URI,
+    API_BASE_URL
+)
 
-#from dotenv import load_dotenv
+import logging
+import sys
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
 
 auth_bp = Blueprint (
     'auth_bp',
@@ -33,20 +44,20 @@ auth_bp = Blueprint (
     static_url_path='/static/'
 )
 
-
-# Carregar variáveis do .env
-#load_dotenv()
-
 # Usuários ativos armazenados em memória (exemplo)
 users = {}
 
 @loggin_manager.user_loader
 def load_user(user_id):
-    return users.get(user_id)
+    logging.info(f"Load_User: {users}")
+    try:
+        return users.get(user_id) 
+    except (ValueError, KeyError):
+        return None
 
 @loggin_manager.unauthorized_handler
 def naoAutorizado():
-    return render_template('auth/index.html', notLogin=True)
+    return render_template('auth/index.html')
 
 
 # Rota de login
@@ -77,7 +88,7 @@ def callback():
         perfil = suap.get(API_BASE_URL + "/api/rh/eu/").json()
 
         user = Usuario(
-            id=str(perfil["identificacao"]),
+            matricula=str(perfil["identificacao"]),
             nome=perfil["nome_usual"],
             email=perfil["email"],
             token=token

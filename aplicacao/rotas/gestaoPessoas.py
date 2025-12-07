@@ -6,7 +6,7 @@ from flask_login import login_required
 from aplicacao.utils.models import Usuario
 from aplicacao.utils.extensions import API_BASE_URL
 from aplicacao.utils.extensions import loggin_manager
-from aplicacao.utils.extensions import feedback
+from aplicacao.utils.extensions import obterRecurso
 
 
 gestaoPessoas_bp = Blueprint (
@@ -20,17 +20,17 @@ gestaoPessoas_bp = Blueprint (
 @gestaoPessoas_bp.route("/meus-dados")
 @login_required
 def meusDados():
-    return feedback("/api/rh/meus-dados/", "comum")
+    return obterRecurso("/api/rh/meus-dados/"  )
 
 @gestaoPessoas_bp.route("/eu")
 @login_required
 def eu():
-    return feedback("/api/rh/eu/", "rh")
+    return obterRecurso("/api/rh/eu/"  )
 
 @gestaoPessoas_bp.route("/unidades-organizacionais")
 @login_required
 def unidadesOrganizacionais():
-    return feedback("/api/rh/unidades-organizacionais/", "rh")
+    return obterRecurso("/api/rh/unidades-organizacionais/"  )
 
 @gestaoPessoas_bp.route("/servidores", methods=["GET","POST"])
 @login_required
@@ -61,7 +61,7 @@ def servidores():
             'cargo_emprego': ce
         }
 
-        return feedback("/api/rh/servidores/", "rh", params)
+        return obterRecurso("/api/rh/servidores/"  , params)
     else:
         a = 'gestaoPessoas_bp.servidores'
         f = [
@@ -102,7 +102,7 @@ def servidorDetalhado():
             'cargo_emprego': ce
         }
 
-        return feedback("/api/rh/servidores/detalhado/", "rh", params)
+        return obterRecurso("/api/rh/servidores/detalhado/"  , params)
     else:
         a = 'gestaoPessoas_bp.servidorDetalhado'
         f = [
@@ -118,7 +118,7 @@ def servidorDetalhado():
 @gestaoPessoas_bp.route("/servidores-integra")
 @login_required
 def servidorIntegra():
-    return feedback("/api/rh/servidores/integra/", "rh")
+    return obterRecurso("/api/rh/servidores/integra/"  )
 
 @gestaoPessoas_bp.route("/setores", methods=["GET","POST"])
 @login_required
@@ -153,7 +153,7 @@ def setores():
 
         print (params)
 
-        return feedback("/api/rh/setores/", "rh", params)
+        return obterRecurso("/api/rh/setores/"  , params)
     else:
         a = 'gestaoPessoas_bp.setores'
         f = [
@@ -168,12 +168,12 @@ def setores():
 @gestaoPessoas_bp.route("/historico-funcional")
 @login_required
 def historicoFuncional():
-    return feedback("/api/rh/meu-historico-funcional/", "rh")
+    return obterRecurso("/api/rh/meu-historico-funcional/"  )
 
 @gestaoPessoas_bp.route("/meus-afastamentos")
 @login_required
 def afastamentos():
-    return feedback("/api/rh/minhas-ocorrencias-afastamentos/", "rh")
+    return obterRecurso("/api/rh/minhas-ocorrencias-afastamentos/"  )
 
 @gestaoPessoas_bp.route("/carteira-funcional", methods=["GET","POST"])
 @login_required
@@ -187,7 +187,7 @@ def carteiraFuncional():
 
         print (params)
 
-        return feedback(f"/api/rh/emitir-carteira-funcional-digital/{params['matricula']}/", "rh")
+        return obterRecurso(f"/api/rh/emitir-carteira-funcional-digital/{params['matricula']}/"  )
     else:
         a = 'gestaoPessoas_bp.carteiraFuncional'
         f = [
@@ -198,12 +198,12 @@ def carteiraFuncional():
 @gestaoPessoas_bp.route("/minhas-ferias")
 @login_required
 def minhasFerias():
-    return feedback("/api/rh/minhas-ferias/", "ferias")
+    return obterRecurso("/api/rh/minhas-ferias/", "ferias")
 
 @gestaoPessoas_bp.route("/minhas-frequencias")
 @login_required
 def minhaFrequencia():
-    return feedback("/api/rh/minhas-frequencias/", "ponto")
+    return obterRecurso("/api/rh/minhas-frequencias/", "ponto")
 
 @gestaoPessoas_bp.route("/servidor-resumido", methods=["GET","POST"])
 @login_required
@@ -217,7 +217,7 @@ def servidorResumido():
 
         print (params)
 
-        return feedback(f"/api/rh/servidor-resumido/", "rh", params)
+        return obterRecurso(f"/api/rh/servidor-resumido/"  , params)
     else:
         a = 'gestaoPessoas_bp.servidorResumido'
         f = [
@@ -228,7 +228,7 @@ def servidorResumido():
 @gestaoPessoas_bp.route("/meus-contracheques")
 @login_required
 def meusContracheques():
-    return feedback("/api/rh/meus-contracheques/", "contracheques")
+    return obterRecurso("/api/rh/meus-contracheques/", "contracheques")
 
 @gestaoPessoas_bp.route("/meu-contracheque", methods=["GET","POST"])
 @login_required
@@ -244,7 +244,7 @@ def meuContracheque():
 
         print (params)
 
-        return feedback(f"/api/rh/meu-contracheque/{params['ano']}/{params['mes']}/", "contracheques")
+        return obterRecurso(f"/api/rh/meu-contracheque/{params['ano']}/{params['mes']}/", "contracheques")
     else:
         a = 'gestaoPessoas_bp.meuContracheque'
         f = [
@@ -256,4 +256,4 @@ def meuContracheque():
 @gestaoPessoas_bp.route("/contracheques")
 @login_required
 def contracheques():
-    return feedback("/api/rh/contracheques/", "contracheques")
+    return obterRecurso("/api/rh/contracheques/", "contracheques")

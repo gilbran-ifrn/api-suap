@@ -6,7 +6,7 @@ from flask_login import login_required
 from aplicacao.utils.models import Usuario
 from aplicacao.utils.extensions import API_BASE_URL
 from aplicacao.utils.extensions import loggin_manager
-from aplicacao.utils.extensions import feedback
+from aplicacao.utils.extensions import obterRecurso
 
 ensino_bp = Blueprint (
     'ensino_bp',
@@ -20,7 +20,7 @@ ensino_bp = Blueprint (
 @ensino_bp.route("/periodos")
 @login_required
 def periodos():
-    return feedback("/api/ensino/periodos/", 'edu')
+    return obterRecurso("/api/ensino/periodos/")
 
 
 @ensino_bp.route("/diario-semestre", methods=["GET","POST"])
@@ -33,7 +33,7 @@ def diarioSemestre():
             'semestre': s
         }
 
-        return feedback(f"/api/ensino/diarios/{params['semestre']}", 'edu')
+        return obterRecurso(f"/api/ensino/diarios/{params['semestre']}")
     else:
         a = 'ensino_bp.diarioSemestre'
         f = [
@@ -51,7 +51,7 @@ def diarioProfessores():
             'id_diario': idD
         }
 
-        return feedback(f"/api/ensino/diarios/{params['id_diario']}/professores", 'edu')
+        return obterRecurso(f"/api/ensino/diarios/{params['id_diario']}/professores")
     else:
         a = 'ensino_bp.diarioProfessores'
         f = [
@@ -69,7 +69,7 @@ def diarioAlunos():
             'id_diario': idD
         }
 
-        return feedback(f"/api/ensino/diarios/{params['id_diario']}/alunos", 'edu')
+        return obterRecurso(f"/api/ensino/diarios/{params['id_diario']}/alunos")
     else:
         a = 'ensino_bp.diarioAlunos'
         f = [
@@ -87,7 +87,7 @@ def diarioAulas():
             'id_diario': idD
         }
 
-        return feedback(f"/api/ensino/diarios/{params['id_diario']}/aulas", 'edu')
+        return obterRecurso(f"/api/ensino/diarios/{params['id_diario']}/aulas")
     else:
         a = 'ensino_bp.diarioAulas'
         f = [
@@ -105,7 +105,7 @@ def diarioMateriais():
             'id_diario': idD
         }
 
-        return feedback(f"/api/ensino/diarios/{params['id_diario']}/materiais", 'edu')
+        return obterRecurso(f"/api/ensino/diarios/{params['id_diario']}/materiais")
     else:
         a = 'ensino_bp.diarioMateriais'
         f = [
@@ -123,7 +123,7 @@ def material():
             'id_material': idM
         }
 
-        return feedback(f"/api/ensino/materiais/{params['id_material']}", 'edu')
+        return obterRecurso(f"/api/ensino/materiais/{params['id_material']}")
     else:
         a = 'ensino_bp.material'
         f = [
@@ -143,7 +143,7 @@ def materialPDF():
             'id_material': idM
         }
 
-        return feedback(f"/api/ensino/materiais/{params['id_diario']}/{params['id_material']}/pdf/", 'edu')
+        return obterRecurso(f"/api/ensino/materiais/{params['id_diario']}/{params['id_material']}/pdf/")
     else:
         a = 'ensino_bp.materialPDF'
         f = [
@@ -162,7 +162,7 @@ def trabalhos():
             'id_diario': idD
         }
 
-        return feedback(f"/api/ensino/diarios/{params['id_diario']}/trabalhos", 'edu')
+        return obterRecurso(f"/api/ensino/diarios/{params['id_diario']}/trabalhos")
     else:
         a = 'ensino_bp.trabalhos'
         f = [
@@ -180,7 +180,7 @@ def topicos():
             'id_diario': idD
         }
 
-        return feedback(f"/api/ensino/diarios/{params['id_diario']}/topicos", 'edu')
+        return obterRecurso(f"/api/ensino/diarios/{params['id_diario']}/topicos")
     else:
         a = 'ensino_bp.topicos'
         f = [
@@ -198,7 +198,7 @@ def disciplinas():
             'semestre': s
         }
 
-        return feedback(f"/api/ensino/disciplinas/{params['semestre']}", 'edu')
+        return obterRecurso(f"/api/ensino/disciplinas/{params['semestre']}")
     else:
         a = 'ensino_bp.disciplinas'
         f = [
@@ -216,7 +216,7 @@ def disciplinaEtapa():
             'disciplina': d
         }
 
-        return feedback(f"/api/ensino/disciplinas/{params['disciplina']}/etapas/", 'edu')
+        return obterRecurso(f"/api/ensino/disciplinas/{params['disciplina']}/etapas/")
     else:
         a = 'ensino_bp.disciplinaEtapa'
         f = [
@@ -234,7 +234,7 @@ def mensagens():
             'status': s
         }
 
-        return feedback(f"/api/ensino/mensagens/entrada/{params['status']}", 'edu')
+        return obterRecurso(f"/api/ensino/mensagens/entrada/{params['status']}")
     else:
         a = 'ensino_bp.mensagens'
         f = [
@@ -245,12 +245,12 @@ def mensagens():
 @ensino_bp.route("/dados-aluno")
 @login_required
 def dadosAluno():
-    return feedback("/api/ensino/meus-dados-aluno/", 'edu')
+    return obterRecurso("/api/ensino/meus-dados-aluno/")
 
 @ensino_bp.route("/requisito-conclusao")
 @login_required
 def requisitoConclusao():
-    return feedback("/api/ensino/requisitos-conclusao/", 'edu')
+    return obterRecurso("/api/ensino/requisitos-conclusao/")
 
 @ensino_bp.route("/aluno-boletim", methods=["GET","POST"])
 @login_required
@@ -264,7 +264,7 @@ def alunoBoletim():
             'periodo_letivo': pl
         }
 
-        return feedback(f"/api/ensino/meu-boletim/{params['ano_letivo']}/{params['periodo_letivo']}/", 'edu')
+        return obterRecurso(f"/api/ensino/meu-boletim/{params['ano_letivo']}/{params['periodo_letivo']}/")
     else:
         a = 'ensino_bp.alunoBoletim'
         f = [
@@ -285,7 +285,7 @@ def alunoDiarios():
             'periodo_letivo': pl
         }
 
-        return feedback(f"/api/ensino/meus-diarios/{params['ano_letivo']}/{params['periodo_letivo']}/", 'edu')
+        return obterRecurso(f"/api/ensino/meus-diarios/{params['ano_letivo']}/{params['periodo_letivo']}/")
     else:
         a = 'ensino_bp.alunoDiarios'
         f = [
@@ -297,12 +297,12 @@ def alunoDiarios():
 @ensino_bp.route("/aluno-periodo-letivo")
 @login_required
 def alunoPeriodoLetivo():
-    return feedback("/api/ensino/meus-periodos-letivos/", 'edu')
+    return obterRecurso("/api/ensino/meus-periodos-letivos/")
 
 @ensino_bp.route("/aluno-avaliacoes")
 @login_required
 def alunoAvaliacoes():
-    return feedback("/api/ensino/minhas-proximas-avaliacoes/", 'edu')
+    return obterRecurso("/api/ensino/minhas-proximas-avaliacoes/")
 
 @ensino_bp.route("/aluno-turma-virtual", methods=["GET","POST"])
 @login_required
@@ -314,7 +314,7 @@ def alunoTurmaVirtual():
             'pk': pk
         }
 
-        return feedback(f"/api/ensino/minha-turma-virtual/{params['pk']}/", 'edu')
+        return obterRecurso(f"/api/ensino/minha-turma-virtual/{params['pk']}/")
     else:
         a = 'ensino_bp.alunoTurmaVirtual'
         f = [
@@ -334,7 +334,7 @@ def alunoTurmaVirtualEspecifico():
             'periodo_letivo': pl
         }
 
-        return feedback(f"/api/ensino/minhas-turmas-virtuais/{params['ano_letivo']}/{params['periodo_letivo']}/", 'edu')
+        return obterRecurso(f"/api/ensino/minhas-turmas-virtuais/{params['ano_letivo']}/{params['periodo_letivo']}/")
     else:
         a = 'ensino_bp.alunoTurmaVirtualEspecifico'
         f = [
@@ -354,7 +354,7 @@ def meuDiarioEad():
             'pk': pk
         }
 
-        return feedback(f"/api/ensino/meus-diarios-ead/{params['pk']}/", 'edu')
+        return obterRecurso(f"/api/ensino/meus-diarios-ead/{params['pk']}/")
     else:
         a = 'ensino_bp.meuDiarioEad'
         f = [
@@ -365,7 +365,7 @@ def meuDiarioEad():
 @ensino_bp.route("/meus-diarios-ead")
 @login_required
 def meusDiariosEad():
-    return feedback("/api/ensino/meus-diarios-ead/", 'edu')
+    return obterRecurso("/api/ensino/meus-diarios-ead/")
 
 
 @ensino_bp.route("/dados-aluno-matriculado", methods=["GET","POST"])
@@ -378,7 +378,7 @@ def dadosAlunoMatriculado():
             'matricula': m
         }
 
-        return feedback(f"/api/ensino/aluno-matriculado/", 'edu', params)
+        return obterRecurso(f"/api/ensino/aluno-matriculado/", params)
     else:
         a = 'ensino_bp.dadosAlunoMatriculado'
         f = [
@@ -389,4 +389,4 @@ def dadosAlunoMatriculado():
 @ensino_bp.route("/portal-professores")
 @login_required
 def portalProfessores():
-    return feedback("/api/ensino/portal-professores/", 'edu')
+    return obterRecurso("/api/ensino/portal-professores/")
