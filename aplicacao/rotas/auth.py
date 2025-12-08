@@ -93,7 +93,15 @@ def callback():
             email=perfil["email"],
             token=token
         )
+        # Adiciona o usuário ao armazenamento em memória
         users[user.id] = user
+
+        # Verificação de valor atribuído corretamente
+        if user.id in users and users.get(user.id) is not None:
+            logging.info(f"Usuário {user.nome} adicionado com sucesso.")
+        else:
+            logging.error(f"Falha ao adicionar o usuário {user.nome}.")
+
         login_user(user)
 
         return redirect(url_for("auth_bp.dash"))
@@ -104,6 +112,16 @@ def callback():
 @auth_bp.route("/logout")
 @login_required
 def logout():
+    # remove o usuário do armazenamento em memória e descarta o valor retornado
+    _ = users.pop(current_user.id, None)
+
+    # Verificação de valor atribuído corretamente
+    if current_user.id in users:
+        logging.info(f"Usuário {current_user.id} não foi removido.")
+    else:
+        logging.error(f"Usuário {current_user.id} foi removido com sucesso.")
+
+
     logout_user()
     return redirect(url_for("auth_bp.index"))
     #return redirect("https://suap.ifrn.edu.br/o/logout/?next=" + url_for("index", _external=True))
@@ -120,4 +138,3 @@ def index():
 @login_required
 def dash():
     return render_template('dash.html')
-
