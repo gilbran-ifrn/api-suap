@@ -1,0 +1,93 @@
+No VS Code, Command+Shift+P para criar uma ambiente virtual
+
+
+{ results[{},{},...], count, next, previous }
+Pesquisa > Projetos
+Gestão Institucional > Documentos
+Administração > Meus Processos Físicos
+Comunicacao Social > Banners
+Comunicacao Social > Eventos Ativos Deferidos
+Gestão de Pessoas > Unidades Organizacionais
+Gestão de Pessoas > Servidores *
+Gestão de Pessoas > Servidores Detalhado *
+Gestão de Pessoas > Setores *
+Gestão de Pessoas > Meu Histórico Funcional *
+Gestão de Pessoas > Minhas Férias *
+Gestão de Pessoas > Meus contracheques
+Gestão de Pessoas > Contracheques *
+Tecnologia da Informação > Atualizações *
+Ensino > Periodos
+Ensino > Diarios Semestre *
+Ensino > Diarios Professores
+Ensino > Diarios Alunos
+Ensino > Diarios Aulas
+Ensino > Diarios Materiais
+Ensino > Diarios Trabalhos
+Ensino > Diarios Topicos *
+Ensino > Disciplinas Semestre
+Ensino > Disciplinas Etapas *
+Ensino > Mensagens Entrada *
+Ensino > Meu boletim *
+Ensino > Meus diarios *
+Ensino > Meus periodos letivos
+Ensino > Minhas próximas avaliações
+Ensino > Minhas turmas virtuais *
+Ensino > Meus diarios ead pk *
+Ensino > Meus diarios ead *
+Ensino > Portal professores *
+
+============================================================
+
+{ next, previous, results{} }
+Gestão Institucional > Estatística
+
+============================================================
+
+{ x, x, ..., [{},{},...] }
+Administração > Meu Processo Físico
+Gestão de Pessoas > Meu contracheque *
+Ensino > Minha turma virtual *
+
+============================================================
+
+{ x, x, ..., x }
+Administração > Validar Visitante Portaria
+Gestão de Pessoas > Meus Dados
+Gestão de Pessoas > Eu
+Gestão de Pessoas > Emitir Carteira Funcional Digital
+Gestão de Pessoas > Servidor Resumido
+Ensino > Materiais id
+Ensino > Meus dados Aluno
+Ensino > Aluno matriculado
+
+============================================================
+
+[ {},{},... ]
+Gestão de Pessoas > Servidores Integra
+Ensino > Aluno resumido
+
+============================================================
+
+{ [{},{},...], [{},{},...] }
+Gestão de Pessoas > Minhas Ocorrências Afastamentos
+
+============================================================
+
+{ [{},{},...], x, x }
+Gestão de Pessoas > Minhas Frequências
+
+============================================================
+
+{ {}, x, x }
+Tecnologia da Informação > Balcão digital id
+Tecnologia da Informação > Balcão digital
+Tecnologia da Informação > Balcão digital cpf
+Tecnologia da Informação > Balcão digital avaliação disponibilidade
+Tecnologia da Informação > Balcão digital id cpf
+Tecnologia da Informação > Balcão digital acompanhamentos
+Ensino > Requisitos Conclusao *
+
+============================================================
+
+x
+Ensino > Materiais pdf

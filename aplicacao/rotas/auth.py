@@ -44,7 +44,8 @@ auth_bp = Blueprint (
     static_url_path='/static/'
 )
 
-# Usuários ativos armazenados em memória (exemplo)
+# Usuários ativos armazenados em memória (exemplo).
+# Só dá certo localmente.
 users = {}
 
 @loggin_manager.user_loader
